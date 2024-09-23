@@ -1,0 +1,11 @@
+.errorBtn{
+    width: max-content;
+    color: #d98c2d;
+    border:  1px solid #d98c2d;
+}
+
+.errorBtn:hover{
+    background-color: #d98c2d !important;
+    color: white !important;
+    border: none;
+}

@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navBlock{
+    background-color : #d98c2d;
+    height : 5rem;
+}
+
+.authButtons{
+    color: white !important;
+}
+
+.authButtons:hover{
+    background-color: white !important;
+    color : #d98c2d !important;
+}
+
+.myRespMenuDrpdwn, .myProfileDrpdwn{
+    width: 15rem;
+    background-color: white;
+    z-index: 5;
+    border-radius: 10px !important;
+    border: 1px solid #d98c2d;
+}
+
+@media screen and (max-width : 575px) {
+    .navs{
+        display: none !important;
+    }
+    .navsIcon{
+        display: block;
+    }
+    .myRespMenuDrpdwn{
+        position: absolute;
+        top: 4.25rem;
+        right: 1.5rem;
+    }
+}
+
+@media screen and (min-width : 576px) {
+    .navs{
+        width: 28%;
+        justify-content: space-between;
+        align-items: center;
+        display: block;
+    }
+    .navsIcon{
+        display: none;
+    }
+}
+
+@media screen and (min-width : 768px) {
+    .navs{
+        width: 21%;
+    }
+}
+
+@media screen and (max-width : 991px) {
+    .myProfileDrpdwn{
+        position: absolute;
+        top: 4.25rem;
+        right: 5.5rem;
+    }
+}
+
+@media screen and (min-width : 992px) {
+    .navs{
+        width: 20%;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .respBtn{
+        display: none !important;
+    }
+    .myProfileDrpdwn{
+        position: absolute;
+        top: 4.25rem;
+        right: 2rem;
+    }
+}
+
+@media screen and (min-width : 1200px) {
+    .navs{
+        width: 15%;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width : 1440px) {
+    .navs{
+        width: 12%;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
