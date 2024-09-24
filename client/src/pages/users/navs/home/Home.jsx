@@ -6,7 +6,7 @@ import HomeContent from '../../../../components/userComponents/homeContent/HomeC
 function Home() {
   return <>
     <AppNavbar/>
-   <div className='p-5'><HomeContent/></div>
+    <div className='p-5'><HomeContent/></div>
   </>
 }
 

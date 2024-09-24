@@ -1,0 +1,24 @@
+.frgtPwdText, .loginText{
+    color: #d98c2d;
+    text-decoration: none;
+}
+
+.authErrorText{
+    color: red;
+}
+
+.authForm{
+    border: 1px solid #d98c2d;
+}
+
+@media screen and (min-width : 768px){
+    .authForm{
+        width: 55%;
+    }
+}
+
+@media screen and (min-width : 1024px){
+    .authForm{
+        width: 35%;
+    }
+}
