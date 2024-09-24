@@ -15,8 +15,6 @@ function ProductCards({product}) {
     const [loading, setLoading] = useState(false)
 
     const getLoginToken = localStorage.getItem('loginToken')
-    let decodedToken = jwtDecode(getLoginToken)
-    let id = decodedToken.id
 
     const handleClose = () => setShow(false)
     const handleShow = (productId) => {
@@ -30,11 +28,17 @@ function ProductCards({product}) {
 
     const handleAddCart = async(productId) => {
         try {
-            setLoading(true)
-            let res = await AxiosService.put(`${ApiRoutes.ADDCARTLIST.path}/${productId}/${id}`,{ headers : { 'Authentication' : `${getLoginToken}` }})
-            if(res.status === 200) {
-                setToggle(!toggle)
-                setCart(cart+1)
+            if(getLoginToken){
+                setLoading(true)
+                const decodedToken = jwtDecode(getLoginToken)
+                const id = decodedToken.id
+                let res = await AxiosService.put(`${ApiRoutes.ADDCARTLIST.path}/${productId}/${id}`,{ headers : { 'Authentication' : `${getLoginToken}` }})
+                if(res.status === 200) {
+                    setToggle(!toggle)
+                    setCart(cart+1)
+                }
+            }else{
+                navigate('/login')
             }
             setLoading(false)
         } catch (error) {
@@ -46,6 +50,8 @@ function ProductCards({product}) {
     const handleRemoveCart = async(productId) => {
         try {
             setLoading(true)
+            const decodedToken = jwtDecode(getLoginToken)
+            const id = decodedToken.id
             let res = await AxiosService.put(`${ApiRoutes.REMOVECARTLIST.path}/${productId}/${id}`,{ headers : { 'Authentication' : `${getLoginToken}` }})
             if(res.status === 200) {
                 setToggle(!toggle)

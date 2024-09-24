@@ -18,6 +18,14 @@
     color : #d98c2d !important;
 }
 
+.cartBtn{
+    border: 1px solid white !important;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    width: 4.5rem;
+}
+
 .myRespMenuDrpdwn, .myProfileDrpdwn{
     width: 15rem;
     background-color: white;
@@ -26,12 +34,15 @@
     border: 1px solid #d98c2d;
 }
 
-@media screen and (max-width : 575px) {
+@media screen and (max-width : 576px) {
     .navs{
-        display: none !important;
+        display: none;
     }
     .navsIcon{
-        display: block;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 7rem;
     }
     .myRespMenuDrpdwn{
         position: absolute;
@@ -42,10 +53,13 @@
 
 @media screen and (min-width : 576px) {
     .navs{
-        width: 28%;
+        width: 22rem;
         justify-content: space-between;
         align-items: center;
-        display: block;
+        display: flex;
+    }
+    .authNavs{
+        width: 10rem;
     }
     .navsIcon{
         display: none;
@@ -53,8 +67,8 @@
 }
 
 @media screen and (min-width : 768px) {
-    .navs{
-        width: 21%;
+    .authNavs{
+        width: 10rem;
     }
 }
 
@@ -68,9 +82,11 @@
 
 @media screen and (min-width : 992px) {
     .navs{
-        width: 20%;
         justify-content: space-around;
         align-items: center;
+    }
+    .authNavs{
+        width: 10rem;
     }
     .respBtn{
         display: none !important;
@@ -84,16 +100,21 @@
 
 @media screen and (min-width : 1200px) {
     .navs{
-        width: 15%;
         justify-content: space-around;
         align-items: center;
+    }
+    .authNavs{
+        width: 10rem;
     }
 }
 
 @media screen and (min-width : 1440px) {
     .navs{
-        width: 12%;
+        width: 20rem;
         justify-content: space-around;
         align-items: center;
+    }
+    .authNavs{
+        width: 10rem;
     }
 }

@@ -1,10 +1,11 @@
 import React from 'react'
-import './Cart.css'
+import AppNavbar from '../../../../components/userComponents/navbar/AppNavbar'
 
 function Cart() {
-  return (
+  return <>
+    <AppNavbar/>
     <div>Cart</div>
-  )
+  </>
 }
 
 export default Cart

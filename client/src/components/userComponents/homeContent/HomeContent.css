@@ -1,6 +1,10 @@
+.filterArea{
+    justify-content: space-between;
+    align-items: center;
+}
 
 .searchField {
-    width: 25%;
+    width: 15rem;
     height: 30px;
     justify-content: flex-start;
     align-items: center;
@@ -21,6 +25,8 @@
     color: #d98c2d;
 }
 
-/* .filterDropdown{
-    
-} */
+@media screen and (min-width:768px) {
+    .searchField {
+        width: 20rem;
+    }
+}

@@ -1,0 +1,23 @@
+.profileBlock{
+    padding : 2rem;
+    border : 1px solid #d98c2d;
+    border-radius: 30px;
+}
+.profileTextField{
+    border:  1px solid #d98c2d;
+    border-radius: 10px;
+    height: 2rem;
+    padding: 0 0.5rem;
+    align-content: center;
+}
+
+@media screen and (min-width :992px){
+    .profileBlock{
+        width: 40%;
+        height: max-content;
+        padding : 3rem;
+    }
+    .profileData{
+        height: max-content;
+    }
+}

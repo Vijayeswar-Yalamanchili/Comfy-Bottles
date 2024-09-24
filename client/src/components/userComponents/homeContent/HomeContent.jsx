@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './HomeContent.css'
 import bottle1 from '../../../assets/bottle1.jpg'
 import bottle2 from '../../../assets/bottle2.jpg'
@@ -6,13 +6,14 @@ import bottle3 from '../../../assets/bottle3.jpeg'
 import bottle4 from '../../../assets/bottle4.jpeg'
 import ProductCards from '../productCards/ProductCards'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faFilter, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { Dropdown } from 'react-bootstrap'
 import { CartDataContext } from '../../../contextApi/CartDataComponent'
 
 function HomeContent() {
 
   const { cart, setCart} = useContext(CartDataContext)
+  const [resp,setResp] = useState(true)
 
   const products = [
     { _id: 1, name: 'Product 1', description: 'Description 1', price: 10.99, image: bottle1 },
@@ -26,17 +27,17 @@ function HomeContent() {
   ]
 
   return <>
-    <div className='d-flex justify-content-between align-items-center'>
+  <div className='px-5 py-2'>
+    <div className='filterArea d-flex px-1 mt-4'>
       <div className="searchField d-flex">
         <input type="search" name="search" className='ps-2' id="search" placeholder='Search by product'/>
         <FontAwesomeIcon icon={faMagnifyingGlass} className='searchIcon'/>
-      </div>
+      </div> 
       <div className="filterDropdown me-3">
         <Dropdown>
           <Dropdown.Toggle variant="outline-secondary" id="dropdown-basic">
-            Filter by Category 
+            <FontAwesomeIcon icon={faFilter}/> 
           </Dropdown.Toggle>
-
           <Dropdown.Menu>
             <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
             <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
@@ -45,7 +46,8 @@ function HomeContent() {
         </Dropdown>
       </div>
     </div>
-    <div className='product-grid mt-4'>
+    
+    <div className='product-grid'>
        {/* <Row xs={1} md={2} lg={3} xl={4} className="g-4"> */}
        {
            products && products.map((product,i) => {
@@ -54,7 +56,7 @@ function HomeContent() {
        }
        {/* </Row> */}
     </div>
-    
+  </div>  
   </>
 }
 
