@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './HomeContent.css'
 import bottle1 from '../../../assets/bottle1.jpg'
 import bottle2 from '../../../assets/bottle2.jpg'
@@ -8,8 +8,11 @@ import ProductCards from '../productCards/ProductCards'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { Dropdown } from 'react-bootstrap'
+import { CartDataContext } from '../../../contextApi/CartDataComponent'
 
 function HomeContent() {
+
+  const { cart, setCart} = useContext(CartDataContext)
 
   const products = [
     { _id: 1, name: 'Product 1', description: 'Description 1', price: 10.99, image: bottle1 },
@@ -42,7 +45,16 @@ function HomeContent() {
         </Dropdown>
       </div>
     </div>
-    <ProductCards products={products}/>
+    <div className='product-grid mt-4'>
+       {/* <Row xs={1} md={2} lg={3} xl={4} className="g-4"> */}
+       {
+           products && products.map((product,i) => {
+               return <ProductCards cart={cart} setCart={setCart} product={product} key={i}/>
+           })
+       }
+       {/* </Row> */}
+    </div>
+    
   </>
 }
 
