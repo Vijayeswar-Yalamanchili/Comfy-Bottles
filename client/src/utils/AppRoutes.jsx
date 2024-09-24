@@ -2,9 +2,9 @@ import React,{ lazy,Suspense } from "react"
 import Loading from '../components/loadingComponent/LoadingComponent'
 
 const HomePage = lazy(()=> import('../pages/users/navs/home/Home'))
-const LoginPage = lazy(()=> import('../pages/users/auths/login/Login'))
-const RegisterPage = lazy(()=> import('../pages/users/auths/register/Register'))
-const ForgotPasswordPage = lazy(()=> import('../pages/users/auths/forgotPassword/ForgotPassword'))
+const LoginPage = lazy(()=> import('../pages/users/auths/Login'))
+const RegisterPage = lazy(()=> import('../pages/users/auths/Register'))
+const ForgotPasswordPage = lazy(()=> import('../pages/users/auths/ForgotPassword'))
 const ErrorPage = lazy(()=> import('../components/errorScreen/ErrorScreen'))
 
 const AppRoutes = [

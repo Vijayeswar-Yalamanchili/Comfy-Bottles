@@ -5,6 +5,8 @@ import { useFormik } from 'formik'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 import AppNavbar from '../../../components/userComponents/navbar/AppNavbar'
+import AxiosService from '../../../utils/AxiosService'
+import ApiRoutes from '../../../utils/ApiRoutes'
 import './Auth.css'
 
 function Register() {
@@ -23,14 +25,14 @@ function Register() {
     },
     validationSchema:Yup.object({       
       firstName:Yup.string().required('Firstname is required').max(20,'Name can not exceed 20 characters').min(3,'firstName can not be shorter than 3 leters'),
-      lastName:Yup.string().required('Lastname is required').max(20,'Name can not exceed 20 characters').min(3,'LastName can not be shorter than 3 leters'),
+      lastName:Yup.string().required('Lastname is required').max(20,'Name can not exceed 20 characters').min(1,'LastName can not be shorter than 1 leter'),
       email:Yup.string().required('Email is required').email('Enter a valid email'),
       mobile:Yup.string().required('Mobile is required').matches(/^\d{10}$/,'Enter a valid mobile number'),
       password:Yup.string().required('Password is required').matches(/^[a-zA-Z0-9!@#$%^&*]{8,15}$/,'Enter a valid Password'),
       confirmPassword:Yup.string().required('Confirm Password is required').matches(/^[a-zA-Z0-9!@#$%^&*]{8,15}$/,'Confirm Password should match Password')
     }),
     onSubmit : async(values) => {
-        try {      
+        try {
           setLoading(true)
           if(values.password === values.confirmPassword){
             let res = await AxiosService.post(`${ApiRoutes.REGISTER.path}`,values)
