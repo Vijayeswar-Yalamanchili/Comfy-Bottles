@@ -30,7 +30,7 @@ const ApiRoutes = {
     },
     GETALLPRODUCTS : {
         path : '/product/allproducts',
-        authenticate : true
+        authenticate : false
     },
     EDITPRODUCT : {
         path : '/product/updateproduct',
