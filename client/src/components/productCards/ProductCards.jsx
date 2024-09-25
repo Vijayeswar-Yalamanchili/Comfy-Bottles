@@ -23,7 +23,7 @@ function ProductCards({product}) {
     const handleClose = () => setShow(false)
     const handleShow = (productId) => {
         setShow(true)
-        getProductData(productId)
+        // getProductData(productId)
     }
 
     const getProductData = async(productId) => {
@@ -35,6 +35,7 @@ function ProductCards({product}) {
             let result = res.data.currentProduct
             if(res.status === 200){
                 setProductData(result)
+                handleShow()
             }
           }else{
             navigate('/login')
@@ -89,7 +90,7 @@ function ProductCards({product}) {
                 <Card.Title>{product.productTitle}</Card.Title>
                 <Card.Text>${product.productPrice}</Card.Text>
                 <div className='d-flex justify-content-between align-items-center'>
-                    <Button variant="secondary" className='addCartBtn' onClick={() => handleShow(product._id)}>Info</Button>
+                    <Button variant="secondary" className='addCartBtn' onClick={() => getProductData(product._id)}>Info</Button>
                     {
                         !addToCart ?
                         <Button variant="none" className='addCartBtn' onClick={() => handleAddCart(product._id)} disabled={loading}>{loading ? <Spinner animation="border" /> : 'Add to Cart'}</Button>
