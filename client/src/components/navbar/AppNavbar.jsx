@@ -4,14 +4,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
 import { toast } from 'react-toastify'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAddressCard, faBars, faBasketShopping, faCartShopping, faHeartPulse, faHouse, faMagnifyingGlass, faPhone, faPowerOff, faRectangleList, faRightToBracket, faUserGear, faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import { faAddressCard, faBars, faCartShopping, faHeartPulse, faHouse, faMagnifyingGlass, faPhone, faPowerOff, faRectangleList, faRightToBracket, faUserGear, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { useLogout } from '../../hooks/UseLogout'
 import { CartDataContext } from '../../contextApi/CartDataComponent'
-import logo from '../../assets/png/comfyHolders.png'
-import './AppNavbar.css'
+import logo from '../../assets/png/ComfyBottles.png'
 import AxiosService from '../../utils/AxiosService'
 import ApiRoutes from '../../utils/ApiRoutes'
+import './AppNavbar.css'
 
 function AppNavbar() {
 
@@ -75,10 +75,10 @@ function AppNavbar() {
             <div className='navs'>
               <Button variant='none' className='authButtons' onClick={()=> navigate('/')}>Home</Button>
               <Button variant='none' className='authButtons' onClick={()=> navigate('/productsList')}>Products-List</Button>
-              <Button variant='none' className='authButtons cartBtn' onClick={()=> navigate('/cart')}>
+              {/* <Button variant='none' className='authButtons cartBtn' onClick={()=> navigate('/cart')}>
                 <FontAwesomeIcon icon={faCartShopping} style={{ height : '1.5rem'}}/>
                 <div className='cartBadge' style={{fontSize :"1.2rem"}}>{cart}</div>
-              </Button>
+              </Button> */}
               <div className='ms-3' onClick={handleMyProfile}><FontAwesomeIcon icon={faUser} style={{height:"1.5rem", color:"white"}}/></div>
             </div>
           :
@@ -89,10 +89,10 @@ function AppNavbar() {
         }
 
         <div className='navsIcon' onClick={()=> handleRespMenu()}>
-          <Button variant='none' className='authButtons cartBtn' onClick={()=> navigate('/cart')}>
+          {/* <Button variant='none' className='authButtons cartBtn' onClick={()=> navigate('/cart')}>
             <FontAwesomeIcon icon={faCartShopping} style={{ height : '1.5rem'}}/>
             <div className='cartBadge' style={{fontSize :"1.2rem"}}>{cart}</div>
-          </Button>
+          </Button> */}
           <FontAwesomeIcon icon={faBars} style={{height:"1.5rem", color:"white"}} />   
         </div>
 
