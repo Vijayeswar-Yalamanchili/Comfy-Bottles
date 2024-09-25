@@ -1,7 +1,7 @@
 import React from 'react'
 import './LoadingComponent.css'
 import { Spinner } from 'react-bootstrap'
-import AppNavbar from '../userComponents/navbar/AppNavbar'
+import AppNavbar from '../navbar/AppNavbar'
 
 function LoadingComponent() {
   return <>

@@ -8,8 +8,9 @@ export const useLogout = () => {
   return () => {
     toast.success("Logged Out Successfully")
     localStorage.clear()
-    {
-      !userLoginToken && navigate('/')
-    }
+    navigate('/')
+    // {
+    //   !userLoginToken && navigate('/')
+    // }
   }
 }

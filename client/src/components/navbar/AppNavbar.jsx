@@ -6,12 +6,12 @@ import { toast } from 'react-toastify'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAddressCard, faBars, faBasketShopping, faCartShopping, faHeartPulse, faHouse, faMagnifyingGlass, faPhone, faPowerOff, faRectangleList, faRightToBracket, faUserGear, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
-import { useLogout } from '../../../hooks/UseLogout'
-import { CartDataContext } from '../../../contextApi/CartDataComponent'
-import logo from '../../../assets/png/comfyHolders.png'
+import { useLogout } from '../../hooks/UseLogout'
+import { CartDataContext } from '../../contextApi/CartDataComponent'
+import logo from '../../assets/png/comfyHolders.png'
 import './AppNavbar.css'
-import AxiosService from '../../../utils/AxiosService'
-import ApiRoutes from '../../../utils/ApiRoutes'
+import AxiosService from '../../utils/AxiosService'
+import ApiRoutes from '../../utils/ApiRoutes'
 
 function AppNavbar() {
 

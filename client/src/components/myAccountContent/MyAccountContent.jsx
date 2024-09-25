@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Button, Container, Form, Modal, Spinner } from 'react-bootstrap'
 import { jwtDecode } from 'jwt-decode'
 import { toast } from 'react-toastify'
-import ApiRoutes from '../../../utils/ApiRoutes'
-import AxiosService from '../../../utils/AxiosService'
+import ApiRoutes from '../../utils/ApiRoutes'
+import AxiosService from '../../utils/AxiosService'
 import './MyAccountContent.css'
 
 function MyAccountContent() {

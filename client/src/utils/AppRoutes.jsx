@@ -1,13 +1,13 @@
 import React,{ lazy,Suspense } from "react"
 import Loading from '../components/loadingComponent/LoadingComponent'
 
-const HomePage = lazy(()=> import('../pages/users/navs/home/Home'))
-const LoginPage = lazy(()=> import('../pages/users/auths/Login'))
-const RegisterPage = lazy(()=> import('../pages/users/auths/Register'))
-const ForgotPasswordPage = lazy(()=> import('../pages/users/auths/ForgotPassword'))
-const ProductsListPage = lazy(()=> import('../pages/users/navs/productsList/ProductsList'))
-const MyAccountPage = lazy(()=> import('../pages/users/navs/myAccount/MyAccount'))
-const CartPage = lazy(()=> import('../pages/users/navs/cart/Cart'))
+const HomePage = lazy(()=> import('../pages/navs/home/Home'))
+const LoginPage = lazy(()=> import('../pages/auths/Login'))
+const RegisterPage = lazy(()=> import('../pages/auths/Register'))
+const ForgotPasswordPage = lazy(()=> import('../pages/auths/ForgotPassword'))
+const ProductsListPage = lazy(()=> import('../pages/navs/productsList/ProductsList'))
+const MyAccountPage = lazy(()=> import('../pages/navs/myAccount/MyAccount'))
+const CartPage = lazy(()=> import('../pages/navs/cart/Cart'))
 const ErrorPage = lazy(()=> import('../components/errorScreen/ErrorScreen'))
 
 const AppRoutes = [

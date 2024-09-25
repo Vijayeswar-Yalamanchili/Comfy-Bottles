@@ -4,9 +4,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import AppNavbar from '../../../components/userComponents/navbar/AppNavbar'
-import AxiosService from '../../../utils/AxiosService'
-import ApiRoutes from '../../../utils/ApiRoutes'
+import AppNavbar from '../../components/navbar/AppNavbar'
+import AxiosService from '../../utils/AxiosService'
+import ApiRoutes from '../../utils/ApiRoutes'
 import './Auth.css'
 
 function ForgotPassword() {

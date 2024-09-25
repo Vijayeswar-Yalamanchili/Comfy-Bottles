@@ -2,12 +2,18 @@ import ProductsModel from '../models/productModel.js'
 
 const addProduct = async(req,res) => {
     try {
-        const { title, category, description, price, availability } = req.body
-        const { filename } = req.file
-        const addproduct = await ProductsModel.create({productTitle : title, productCategory : category, productDescription : description, productPrice : price, productAvailability: availability, productImage : filename})
-        res.status(200).send({
-            addproduct
-        })
+        if(req?.file === undefined){
+            res.status(400).send({
+                message : "Please enter all details and Product Image"
+            })
+        } else{
+            const { title, category, description, price, availability } = req.body
+            const { filename } = req.file
+            const addproduct = await ProductsModel.create({productTitle : title, productCategory : category, productDescription : description, productPrice : price, productAvailability: availability, productImage : filename})
+            res.status(200).send({
+                addproduct
+            })
+        }
     } catch (error) {
         res.status(500).send({
             message : "Internal server error in adding new product"
@@ -44,15 +50,21 @@ const getCurrentProductData = async(req,res) => {
 
 const updateProduct = async(req,res) => {
     try {
-        console.log(req.file)
-        const { editTitle, editCategory, editDescription, editPrice, editAvailability } = req.body
-        const { filename } = req.file
-        // const { title, category, description, price, availability } = req.body
-        // const { filename } = req.file
-        let updatedProduct = await ProductsModel.findByIdAndUpdate({_id : req.params.productId}, {$set : {productTitle : editTitle, productCategory : editCategory, productDescription : editDescription, productPrice : editPrice, productAvailability: editAvailability, productImage : filename}},{new : true})
-        res.status(200).send({
-            updatedProduct
-        })
+        if(req?.file === undefined){
+            const { editTitle, editCategory, editDescription, editPrice, editAvailability } = req.body
+            // const { filename } = req.file
+            let updatedProduct = await ProductsModel.findByIdAndUpdate({_id : req.params.productId}, {$set : {productTitle : editTitle, productCategory : editCategory, productDescription : editDescription, productPrice : editPrice, productAvailability: editAvailability}},{new : true})
+            res.status(200).send({
+                updatedProduct
+            })
+        } else {
+            const { editTitle, editCategory, editDescription, editPrice, editAvailability } = req.body
+            const { filename } = req.file
+            let updatedProduct = await ProductsModel.findByIdAndUpdate({_id : req.params.productId}, {$set : {productTitle : editTitle, productCategory : editCategory, productDescription : editDescription, productPrice : editPrice, productAvailability: editAvailability, productImage : filename}},{new : true})
+            res.status(200).send({
+                updatedProduct
+            })
+        }        
     } catch (error) {
         res.status(500).send({
             message : "Internal server error in editing product"

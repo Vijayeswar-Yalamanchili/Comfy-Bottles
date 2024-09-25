@@ -3,8 +3,8 @@ import { Button, Card, Image, Modal, Spinner } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
-import AxiosService from '../../../utils/AxiosService'
-import ApiRoutes from '../../../utils/ApiRoutes'
+import AxiosService from '../../utils/AxiosService'
+import ApiRoutes from '../../utils/ApiRoutes'
 import './ProductCards.css'
 
 function ProductCards({product}) {
@@ -28,12 +28,16 @@ function ProductCards({product}) {
 
     const getProductData = async(productId) => {
         try {
-          let decodedToken = jwtDecode(getLoginToken)
-          let id = decodedToken.id
-          let res = await AxiosService.get(`${ApiRoutes.CURRENTPRODUCTDATA.path}/${productId}/${id}`, { headers : { 'Authorization' : `${getLoginToken}`}})
-          let result = res.data.currentProduct
-          if(res.status === 200){
-            setProductData(result)
+          if(getLoginToken){
+            let decodedToken = jwtDecode(getLoginToken)
+            let id = decodedToken.id
+            let res = await AxiosService.get(`${ApiRoutes.CURRENTPRODUCTDATA.path}/${productId}/${id}`, { headers : { 'Authorization' : `${getLoginToken}`}})
+            let result = res.data.currentProduct
+            if(res.status === 200){
+                setProductData(result)
+            }
+          }else{
+            navigate('/login')
           }
         } catch (error) {
           toast.error(error.response.data.message || error.message)
@@ -77,8 +81,6 @@ function ProductCards({product}) {
             toast.error(error.response.data.message || error.message)
         }
     }
-
-    // console.log(productData)
 
     return <>
         <Card className="product-card" style={{ width: '18rem'}} key={product._id}>

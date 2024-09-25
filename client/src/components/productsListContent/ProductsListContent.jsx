@@ -2,10 +2,11 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Button, Table, Modal, Form, Image } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 import { jwtDecode } from 'jwt-decode'
-import AxiosService from '../../../utils/AxiosService'
-import ApiRoutes from '../../../utils/ApiRoutes'
+import AxiosService from '../../utils/AxiosService'
+import ApiRoutes from '../../utils/ApiRoutes'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { Navigate } from 'react-router-dom'
 
 function ProductsListContent() {
 
@@ -113,9 +114,13 @@ function ProductsListContent() {
 
   const getAllProducts = async() => {
     try {
-      let res = await AxiosService.get(`${ApiRoutes.GETALLPRODUCTS.path}/${id}`, { headers : { 'Authorization' : `${getLoginToken}`}})
-      if(res.status === 200) {
-        setProducts(res.data.productsList)
+      if(getLoginToken){
+        let res = await AxiosService.get(`${ApiRoutes.GETALLPRODUCTS.path}`)
+        if(res.status === 200) {
+          setProducts(res.data.productsList)
+        }
+      }else {
+        navigate('/login')
       }
     } catch (error) {
       toast.error(error.response.data.message || error.message)
@@ -250,7 +255,7 @@ function ProductsListContent() {
           </Form.Group>
           <Form.Group className="mb-3">
               <Form.Label>Product Image<span style={{fontSize:'small'}}>(Name should not contain space)</span></Form.Label>
-              <Form.Control type="file" name='editImagefile' defaultValue={productData?.productImage} onChange={(e)=> setEditImage(e.target.files[0])} accept="image/*"/>
+              <Form.Control type="file" name='editImagefile'  onChange={(e)=> setEditImage(e.target.files[0])} accept="image/*"/>
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
