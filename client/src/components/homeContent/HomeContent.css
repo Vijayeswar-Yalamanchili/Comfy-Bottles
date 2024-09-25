@@ -25,6 +25,14 @@
     color: #d98c2d;
 }
 
+@media screen and (max-width:576px) {
+    .filterArea {
+        flex-direction: column;
+        height: 5rem;
+        align-items: center;
+    }
+}
+
 @media screen and (min-width:768px) {
     .searchField {
         width: 20rem;

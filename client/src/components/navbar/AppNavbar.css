@@ -42,7 +42,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 7rem;
     }
     .myRespMenuDrpdwn{
         position: absolute;
@@ -53,7 +52,6 @@
 
 @media screen and (min-width : 576px) {
     .navs{
-        width: 22rem;
         justify-content: space-between;
         align-items: center;
         display: flex;

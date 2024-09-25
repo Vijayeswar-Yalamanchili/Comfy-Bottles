@@ -137,7 +137,7 @@ function ProductsListContent() {
         <Button onClick={handleShow}>Add Product</Button>
       </div>
       <div className='mt-3'>
-        <Table striped bordered >
+        <Table striped bordered responsive>
           <thead>
             <tr>
               <th className='text-center'>S.no</th>

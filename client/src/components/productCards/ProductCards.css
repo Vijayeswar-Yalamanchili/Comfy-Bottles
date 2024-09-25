@@ -53,3 +53,10 @@
   background-color: red;
   color: white;
 }
+
+@media screen and (max-width : 576px){ 
+  .product-grid{
+    justify-content: center !important;
+  }
+  
+}
