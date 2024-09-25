@@ -2,11 +2,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Button, Table, Modal, Form, Image } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 import { jwtDecode } from 'jwt-decode'
-import AxiosService from '../../utils/AxiosService'
-import ApiRoutes from '../../utils/ApiRoutes'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
-import { Navigate } from 'react-router-dom'
+import AxiosService from '../../utils/AxiosService'
+import ApiRoutes from '../../utils/ApiRoutes'
 
 function ProductsListContent() {
 
@@ -190,10 +189,10 @@ function ProductsListContent() {
             <Form.Label>Product Category </Form.Label>
             <Form.Select name='category'  ref={productCategory} onChange={()=> productCategory.current.value}>
               <option value = "-">Select Category</option>
-              <option value="Stainless Stell">Stainless Stell</option>
+              <option value="Stainless-steel">Stainless-steel</option>
               <option value="Bronze">Bronze</option>
-              <option value="Temperature converter">Temperature converter</option>
-              <option value="Sports Confy">Sports Confy</option>
+              <option value="Temperature-converter">Temperature-converter</option>
+              <option value="Sports-Confy">Sports-Confy</option>
             </Form.Select> 
           </Form.Group>
           <Form.Group className="mb-3">

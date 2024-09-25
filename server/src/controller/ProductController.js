@@ -23,7 +23,12 @@ const addProduct = async(req,res) => {
 
 const getAllProducts = async(req,res) => {
     try {
-        let productsList = await ProductsModel.find()
+        const category = req.query.category;
+        let query = {};
+        if (category) {
+            query.productCategory = category;
+        }
+        let productsList = await ProductsModel.find(query)
         res.status(200).send({
             productsList
         })

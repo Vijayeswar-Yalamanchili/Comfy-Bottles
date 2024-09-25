@@ -51,7 +51,7 @@ const ApiRoutes = {
     REMOVECARTLIST : {
         path : '/product/removecart',
         authenticate : true
-    }
+    },
 }
 
 export default ApiRoutes
