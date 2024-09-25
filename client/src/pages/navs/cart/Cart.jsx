@@ -1,5 +1,5 @@
 import React from 'react'
-import AppNavbar from '../../../../components/userComponents/navbar/AppNavbar'
+import AppNavbar from '../../../components/navbar/AppNavbar'
 
 function Cart() {
   return <>
