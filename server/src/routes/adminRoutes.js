@@ -4,7 +4,7 @@ import adminAuthController from '../controller/adminAuthController.js'
 import adminUserController from '../controller/adminUserController.js'
 import adminProductController from '../controller/adminProductController.js'
 import productImageUpload from '../helper/productImageUpload.js'
-import adminOrderController from '../controller/adminOrderController.js'
+import adminOrderController from '../controller/adminOrderController.js' 
 
 const router = express.Router()
 

@@ -5,7 +5,7 @@ const productSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    productWeight : {
+    productCategory : {
         type : String,
         required : true
     },
@@ -17,7 +17,7 @@ const productSchema = new mongoose.Schema({
         type : Number,
         required : true
     },
-    productQuantity : {
+    productAvailability : {
         default : 0,
         type : Number,
     },

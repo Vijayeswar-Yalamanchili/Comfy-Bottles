@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Card, Modal, Spinner } from 'react-bootstrap'
+import { Button, Card, Image, Modal, Spinner } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
@@ -13,8 +13,12 @@ function ProductCards({product}) {
     const [show, setShow] = useState(false)
     const [addToCart,setAddToCart] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [toggle, setToggle] = useState(false)
+    const [cart, setCart] = useState()
+    const [productData,setProductData] = useState()
 
     const getLoginToken = localStorage.getItem('loginToken')
+    let serverBaseURL = import.meta.env.VITE_SERVER_URL
 
     const handleClose = () => setShow(false)
     const handleShow = (productId) => {
@@ -23,8 +27,18 @@ function ProductCards({product}) {
     }
 
     const getProductData = async(productId) => {
-
-    }
+        try {
+          let decodedToken = jwtDecode(getLoginToken)
+          let id = decodedToken.id
+          let res = await AxiosService.get(`${ApiRoutes.CURRENTPRODUCTDATA.path}/${productId}/${id}`, { headers : { 'Authorization' : `${getLoginToken}`}})
+          let result = res.data.currentProduct
+          if(res.status === 200){
+            setProductData(result)
+          }
+        } catch (error) {
+          toast.error(error.response.data.message || error.message)
+        }
+      }
 
     const handleAddCart = async(productId) => {
         try {
@@ -36,13 +50,13 @@ function ProductCards({product}) {
                 if(res.status === 200) {
                     setToggle(!toggle)
                     setCart(cart+1)
+                    setAddToCart(!addToCart)
                 }
             }else{
                 navigate('/login')
             }
             setLoading(false)
         } catch (error) {
-            console.log(error.message)
             toast.error(error.response.data.message || error.message)
         }
     }
@@ -56,6 +70,7 @@ function ProductCards({product}) {
             if(res.status === 200) {
                 setToggle(!toggle)
                 setCart(cart-1)
+                setAddToCart(!addToCart)
             }
             setLoading(false)
         } catch (error) {
@@ -63,12 +78,14 @@ function ProductCards({product}) {
         }
     }
 
+    // console.log(productData)
+
     return <>
         <Card className="product-card" style={{ width: '18rem'}} key={product._id}>
-            <Card.Img variant="top" className='productImage' src={product.image}/>
+            <Card.Img variant="top" className='productImage' src={`${serverBaseURL}/${product.productImage}`}/>
             <Card.Body className='px-2'>
-                <Card.Title>{product.name}</Card.Title>
-                <Card.Text>${product.price}</Card.Text>
+                <Card.Title>{product.productTitle}</Card.Title>
+                <Card.Text>${product.productPrice}</Card.Text>
                 <div className='d-flex justify-content-between align-items-center'>
                     <Button variant="secondary" className='addCartBtn' onClick={() => handleShow(product._id)}>Info</Button>
                     {
@@ -83,16 +100,24 @@ function ProductCards({product}) {
 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>{productData?.productTitle}</Modal.Title>
             </Modal.Header>
-            <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+            <Modal.Body className='p-3'>
+                <div style={{marginLeft : "35%"}}><Image src={`${serverBaseURL}/${product.productImage}`} style={{height : "12rem"}}/></div>
+                <hr />
+                <div className='mt-3'>
+                    <p>Description : {productData?.productDescription}</p>
+                    <p>Price : {'\u20B9'}{productData?.productPrice}</p>
+                    <p>In-Stock : {productData?.productAvailability}</p>
+                </div>
+            </Modal.Body>
             <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-                Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-                Save Changes
-            </Button>
+            {
+                !addToCart ?
+                <Button variant="primary" className='addCartBtn' onClick={() => handleAddCart(product._id)} disabled={loading}>{loading ? <Spinner animation="border" /> : 'Add to Cart'}</Button>
+                :
+                <Button variant="none" className='removeCartBtn' onClick={() => handleRemoveCart(product._id)} disabled={loading}>{loading ? <Spinner animation="border" /> : 'Cart off' }</Button>
+            }
             </Modal.Footer>
         </Modal>
     </>

@@ -3,6 +3,8 @@ import userAuthController from '../controller/userAuthController.js'
 import userController from '../controller/userController.js'
 import auth from '../helper/auth.js'
 import addressController from '../controller/addressController.js'
+import productImageUpload from '../helper/productImageUpload.js'
+import ProductController from '../controller/ProductController.js'
 
 const router = express.Router()
 
@@ -24,8 +26,13 @@ router.put('/editaddress/:id/:addressId',auth.authenticate, addressController.ed
 router.delete('/deleteaddress/:id/:addressId',auth.authenticate, addressController.deleteAddress)
 
 //Products
-router.get('/cartitems/:id', auth.authenticate,userController.cartItemsList)
-router.get('/allproducts/:id',auth.authenticate, userController.getAllProducts)
+router.post('/addproduct/:id', auth.authenticate, productImageUpload.imageUpload.single('imagefile'),ProductController.addProduct)
+router.get('/currentproductdata/:productId/:id',auth.authenticate, ProductController.getCurrentProductData)
+router.get('/allproducts/:id',auth.authenticate, ProductController.getAllProducts)
+router.put('/updateproduct/:productId/:id',auth.authenticate, productImageUpload.imageUpload.single('editImagefile'),ProductController.updateProduct)
+router.delete('/deleteproduct/:id',auth.authenticate, ProductController.deleteProduct)
+// router.get('/cartitems/:id', auth.authenticate,userController.cartItemsList)
+// router.get('/allproducts/:id',auth.authenticate, userController.getAllProducts)
 router.put('/addcart/:productId/:id', auth.authenticate, userController.addCartList)
 router.put('/removecart/:productId/:id', auth.authenticate, userController.removeCartList)
 router.put('/clearcart/:id', auth.authenticate, userController.clearCartItems)

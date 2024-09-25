@@ -47,10 +47,28 @@ const ApiRoutes = {
         path : '/users/deleteaddress',
         authenticate : true
     },
+    ADDPRODUCT : {
+        path : '/users/addproduct',
+        authenticate : true
+    },
     GETALLPRODUCTS : {
         path : '/users/allproducts',
         authenticate : true
     },
+    EDITPRODUCT : {
+        path : '/users/updateproduct',
+        authenticate : true
+    },
+    DELETEPRODUCT : {
+        path : '/users/deleteproduct',
+        authenticate : true
+    },
+    CURRENTPRODUCTDATA : {
+        path : '/users/currentproductdata',
+        authenticate : true
+    },
+
+
     ADDCARTLIST : {
         path : '/users/addcart',
         authenticate : true
@@ -133,10 +151,7 @@ const ApiRoutes = {
         path : '/admin/deleteuser',
         authenticate : true
     },
-    ADMINADDPRODUCT : {
-        path : '/admin/addproduct',
-        authenticate : true
-    },
+
     ADMINGETPRODUCT : {
         path : '/admin/getallproducts',
         authenticate : true
